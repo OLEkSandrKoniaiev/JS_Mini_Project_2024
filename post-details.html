@@ -21,25 +21,6 @@
 
             div.appendChild(createListFromJson(json));
 
-            let comments_block = document.createElement("div");
-            comments_block.classList.add("main_block");
-
-            fetch(`https://jsonplaceholder.typicode.com/posts/${json["id"]}/comments`)
-                .then(res => res.json())
-                .then(c_json => {
-
-                    for (let comment of c_json) {
-                        let comment_block = document.createElement("div");
-                        comment_block.classList.add("comment_block");
-                        comment_block.appendChild(createListFromJson(comment));
-
-                        comments_block.appendChild(comment_block);
-                    }
-
-                });
-
-            div.appendChild(comments_block);
-
             let back_button = document.createElement("button");
             back_button.classList.add("wide_button");
             back_button.innerText = "Повернутись";
@@ -47,6 +28,32 @@
                 window.location.href = `user-details.html?id=${json["userId"]}`;
             }
             div.appendChild(back_button);
+
+            let comments_block = document.createElement("div");
+            comments_block.classList.add("main_block");
+
+            fetch(`https://jsonplaceholder.typicode.com/posts/${json["id"]}/comments`)
+                .then(res => res.json())
+                .then(c_json => {
+
+                    for (let comment in c_json) {
+                        let comment_block = document.createElement("div");
+                        comment_block.classList.add("comment_block");
+
+                        let p = document.createElement('p');
+                        // p.innerText = `Коментар №${c_json.indexOf(comment) + 1}`;
+                        p.innerText = `Коментар №${parseInt(comment) + 1}`;
+                        comment_block.appendChild(p);
+
+                        // comment_block.appendChild(createListFromJson(comment));
+                        comment_block.appendChild(createListFromJson(c_json[comment]));
+
+                        comments_block.appendChild(comment_block);
+                    }
+
+                });
+
+            div.appendChild(comments_block);
 
             document.body.appendChild(div);
         });
