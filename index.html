@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Mini-Project</title>
+</head>
+<body>
+<script>
+    let users_block = document.createElement("div");
+    users_block.classList.add("main_block");
+
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then((res) => res.json())
+        .then((json) => {
+
+            for (let user of json) {
+                let div = document.createElement("div");
+                div.classList.add("user_block");
+
+                let h3 = document.createElement("h3");
+                h3.innerText = user["name"];
+                div.appendChild(h3);
+
+                let p = document.createElement("p");
+                p.innerText = `ID користувача: ${user["id"]}`;
+                div.appendChild(p);
+
+                let button = document.createElement("button");
+                button.innerText = "Більше";
+                button.onclick = function () {
+                    window.location.href = `user-details.html?id=${user["id"]}`;
+                };
+                div.appendChild(button);
+
+                users_block.appendChild(div);
+            }
+
+        });
+
+    document.body.appendChild(users_block);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>User information</title>
+</head>
+<body>
+<script>
+    let url = new URL(window.location.href);
+    let userId = url.searchParams.get("id");
+
+    fetch(`http://jsonplaceholder.typicode.com/users/${userId}`)
+        .then(res => res.json())
+        .then(json => {
+            let div = document.createElement("div");
+            div.classList.add("user_info_block");
+
+            div.appendChild(createListFromJson(json));
+
+            let back_button = document.createElement("button");
+            back_button.classList.add("wide_button");
+            back_button.innerText = "Повернутись";
+            back_button.onclick = function () {
+                window.location.href = "index.html";
+            }
+            div.appendChild(back_button);
+
+            let post_button = document.createElement("button");
+            post_button.classList.add("wide_button");
+            post_button.innerText = "Переглянути пости";
+            post_button.onclick = function () {
+
+                if (document.getElementById("posts")) {
+                    return;
+                }
+
+                let posts_block = document.createElement("div");
+                posts_block.classList.add("main_block");
+                posts_block.id = "posts";
+
+                fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
+                    .then(res => res.json())
+                    .then(p_json => {
+
+                        for (let post of p_json) {
+                            let post_block = document.createElement("div");
+                            post_block.classList.add("post_block");
+
+                            let a = document.createElement('a');
+                            a.innerText = `Пост №${post["id"]}\n${post["title"]}`;
+                            a.href = `post-details.html?id=${post["id"]}`;
+                            post_block.appendChild(a);
+
+                            posts_block.appendChild(post_block);
+                        }
+
+                    });
+                div.appendChild(posts_block);
+            }
+
+            div.appendChild(post_button);
+
+            document.body.appendChild(div);
+        });
+
+    function createListFromJson(json) {
+        let ul = document.createElement("ul");
+
+        for (let key in json) {
+            if (typeof json[key] === "object") {
+                let li = document.createElement("li");
+                li.innerText = `${key}:`;
+
+                let subUl = createListFromJson(json[key]);
+                li.appendChild(subUl);
+                ul.appendChild(li);
+            } else {
+                let li = document.createElement("li");
+                li.innerText = `${key}: ${json[key]}`;
+                ul.appendChild(li);
+            }
+        }
+
+        return ul;
+    }
+
+</script>
+</body>
+</html>
