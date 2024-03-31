@@ -76,9 +76,11 @@
                 li.innerText = `${key}:`;
 
                 let subUl = createListFromJson(json[key]);
+
                 li.appendChild(subUl);
                 ul.appendChild(li);
-            } else {
+            }
+            else {
                 let li = document.createElement("li");
                 li.innerText = `${key}: ${json[key]}`;
                 ul.appendChild(li);

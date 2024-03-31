@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39cc81d0-2aea-4b0c-9b27-4fe403578758" name="Changes" comment="First try">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/post-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
-    </list>
+    <list default="true" id="39cc81d0-2aea-4b0c-9b27-4fe403578758" name="Changes" comment="Final 1;" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,7 +59,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1711805621019</updated>
-      <workItem from="1711805622087" duration="13521000" />
+      <workItem from="1711805622087" duration="13756000" />
     </task>
     <task id="LOCAL-00001" summary="First try">
       <option name="closed" value="true" />
@@ -73,7 +69,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711818678060</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Final 1;">
+      <option name="closed" value="true" />
+      <created>1711820739964</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711820739964</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -81,6 +85,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First try" />
-    <option name="LAST_COMMIT_MESSAGE" value="First try" />
+    <MESSAGE value="Final 1;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final 1;" />
   </component>
 </project>
